@@ -10,10 +10,10 @@ class Header extends Component {
             <span className="of">Of</span>
             <span className="the">the</span>
           </span>
-          of the Day
+          Day
         </h1>
         <h3 className="tagline">
-          <span>Fresh Daily</span>
+          <span>{this.props.tagline}</span>
         </h3>
       </header>
     );
