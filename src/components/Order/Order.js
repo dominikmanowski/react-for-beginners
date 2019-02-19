@@ -5,7 +5,8 @@ class Order extends Component {
   renderOrder = key => {
     const count = this.props.order[key];
     const fish = this.props.fishes[key];
-    const isAvailable = fish.status === "available";
+    if (!fish) return null;
+    const isAvailable = fish && fish.status === "available";
     if (!isAvailable) {
       return (
         <li key={key}>
