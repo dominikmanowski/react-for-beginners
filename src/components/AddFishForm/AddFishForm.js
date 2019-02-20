@@ -25,7 +25,6 @@ class AddFishForm extends Component {
     // reset the form after submitting
     e.currentTarget.reset();
   };
-
   render() {
     return (
       <form className="fish-edit" onSubmit={this.createFish}>
@@ -38,16 +37,16 @@ class AddFishForm extends Component {
         />
         <select name="status" ref={this.statusRef}>
           <option value="available">Fresh!</option>
-          <option value="unavailable">Sold out</option>
+          <option value="unavailable">Sold Out!</option>
         </select>
-        <textarea name="desc" ref={this.descRef} placeholder="Description" />
+        <textarea name="desc" ref={this.descRef} placeholder="Desc" />
         <input
           name="image"
           ref={this.imageRef}
           type="text"
           placeholder="Image"
         />
-        <button type="submit">+ Add fish</button>
+        <button type="submit">+ Add Fish</button>
       </form>
     );
   }

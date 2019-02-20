@@ -14,14 +14,14 @@ class App extends Component {
   };
 
   static propTypes = {
-    match: PropTypes.object
+    match: PropTypes.object.isRequired
   };
 
   componentDidMount() {
     const { params } = this.props.match;
     // first reinstate our localStorage
     const localStorageRef = localStorage.getItem(params.storeId);
-    if (localStorage) {
+    if (localStorageRef) {
       this.setState({ order: JSON.parse(localStorageRef) });
     }
     this.ref = base.syncState(`${params.storeId}/fishes`, {
@@ -53,8 +53,8 @@ class App extends Component {
   };
 
   updateFish = (key, updatedFish) => {
-    // 1. Take a copy ot the current state
-    const fishes = this.state.fishes;
+    // 1. Take a copy of the current state
+    const fishes = { ...this.state.fishes };
     // 2. Update that copied state
     fishes[key] = updatedFish;
     // 3. Set that copied state to state
@@ -113,13 +113,13 @@ class App extends Component {
           order={this.state.order}
           removeFromOrder={this.removeFromOrder}
         />
-        {/* <Order {...this.state} /> */}
         <Inventory
           addFish={this.addFish}
           updateFish={this.updateFish}
           deleteFish={this.deleteFish}
           loadSampleFishes={this.loadSampleFishes}
           fishes={this.state.fishes}
+          storeId={this.props.match.params.storeId}
         />
       </div>
     );
